@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+    <!-- Shop Details Section Begin -->
+        <br><div class="product__details__content">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="product__details__text">
+                            <img src="{{ products.image.url }}" width="300" alt="">
+                            <br><br>
+                            <h3 style="margin-top: 10%;">{{ products.title }}</h3>
+                            <p>{{ products.descriptions }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shop Details Section End -->
+{% endblock %}

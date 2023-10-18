@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <!-- Shop Section Begin -->
+    <section class="shop spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="shop__sidebar">
+                        <div class="shop__sidebar__search">
+                            <form action="#">
+                                <input type="text"name="q" value="{{ reques.GET.q }}" placeholder="Поиск...">
+                                <button type="submit"><span class="icon_search"></span></button>
+                            </form>
+                        </div>
+                        <div class="shop__sidebar__accordion">
+                            <div class="accordion" id="accordionExample">
+                                <div class="card">
+                                    <div class="card-heading">
+                                        <a data-toggle="collapse" data-target="#collapseOne">Категории</a>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <div class="shop__sidebar__categories">
+                                                <ul class="nice-scroll">
+                                                    {% for category in categories %}
+                                                    <li><a href="?category={{ category.id }}">{{ category.title }}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="shop__product__option">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="shop__product__option__left">
+                                    <p>Показано {{ page_obj.number }} из {{ page_obj.paginator.num_pages }} результатов</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                    {% for product in products %}
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__text">
+                                    <h5 align="center">{{ product.title }}</h5>
+                                </div>
+                                    <div class="product__item__pic set-bg" data-setbg="{{ product.image.url }}">
+                                        <ul class="product__hover">
+                                            <li><button onclick="window.location.href = '{% url 'index-detail' pk=product.pk %}';">Подробнее</button>
+                                        </li>
+                                        </ul>
+                                    </div>
+                            </div>
+
+                        </div>
+                        </a>
+                    {% endfor %}
+                    </div>
+                    <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    {% if page_obj.has_previous %}
+                                        <a href="?page=1"><<</a>
+                                        <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a><br>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="current">
+                                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                                    </span>
+                                </div>
+                                <div class="col-md-4">
+                                    {% if page_obj.has_next %}
+                                        <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
+                                        <a href="?page={{ page_obj.paginator.num_pages }}">>></a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shop Section End -->
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+{% endblock %}

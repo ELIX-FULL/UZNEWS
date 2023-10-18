@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="preloder">
+    <div class="loader"></div>
+</div><br>
+<h5 align="center">Вход только для администрации</h5><br>
+<form method="post" style="text-align:center">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Войти&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" />
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
+<br><p align="center"><a href="/">Перейти на главную</a></p>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h4 style="text-align:center">Напишите свое сообщение</h4><br>
+<form method="POST" style="text-align:center">
+    {% csrf_token %}
+    {{ forms.as_p }}
+    <button type="submit">Отправить</button><br><br>
+</form>
+</body>
+</html>
+{% endblock %}
