@@ -49,8 +49,8 @@ class Migration(migrations.Migration):
                 ('category', models.ManyToManyField(to='products.categorymodel')),
             ],
             options={
-                'verbose_name': 'Продукт',
-                'verbose_name_plural': 'Продукты',
+                'verbose_name': 'новости',
+                'verbose_name_plural': 'Новости',
             },
         ),
         migrations.CreateModel(

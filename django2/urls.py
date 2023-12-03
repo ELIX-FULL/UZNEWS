@@ -3,7 +3,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 from django2 import settings
-from products import views
 from products.views import IndexPageView, IndexDetailView
 
 urlpatterns = [
